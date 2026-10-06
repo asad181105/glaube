@@ -28,6 +28,10 @@ npm run dev
 4. Restart `npm run dev`.
 5. Sign in at `/admin` and click **Sync catalog to Supabase**.
 
-Admin: `/admin` (default local password `glaube-admin` — change it).
+Admin: `/admin` (set `ADMIN_PASSWORD` in `.env.local`).
 
 Public forms insert into `inquiries`, `sourcing_requests`, `custom_build_requests` and `vehicle_requests`. Inventory reads from `vehicles` / `vehicle_images` when the database has rows, otherwise the local catalog.
+
+## Deploy
+
+See [DEPLOY.md](./DEPLOY.md). Import the GitHub repo in Vercel, add the env vars from `.env.example`, then deploy.

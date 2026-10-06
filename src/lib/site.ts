@@ -1,10 +1,19 @@
+function resolveSiteUrl() {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+  if (explicit) return explicit;
+  const vercel =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+  if (vercel) return `https://${vercel.replace(/^https?:\/\//, "")}`;
+  return "https://glaubeexotics.com";
+}
+
 export const siteConfig = {
   name: "Glaube Exotics",
   shortName: "GLAUBE",
   tagline: "Beyond Ordinary.",
   description:
     "Glaube Exotics specializes in premium vehicle sourcing, international automotive opportunities, bespoke customization and exceptional automotive experiences.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://glaubeexotics.com",
+  url: resolveSiteUrl(),
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
 };
 
